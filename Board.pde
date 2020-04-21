@@ -20,20 +20,10 @@ class Board {
   }
   
   void show() {
-    for (int i = 0; i < cntx; i++) {
-      for (int j = 0; j < cnty; j++) {
-        stroke(51);
-        fill(100);
-        if (mass[i][j] == 1) fill(0, 255, 0);
-        if (mass[i][j] == 2) fill(255, 0, 0);
-        circle(ofx + i*dx + dx/2, ofy + j*dy + dy/2, d);
-      }
-    }
-    
     if (win != 0) {
       if (win == 1) fill(0, 255, 0, 150);
       else if (win == 2) fill(255, 0, 0, 150);
-      else fill(255, 102, 0, 150);
+      else fill(0, 204, 255, 150);
       noStroke();
       rect(ofx, ofy, bwidth, bheight);
     } else {
@@ -42,6 +32,16 @@ class Board {
       strokeWeight(2);
       noFill();
       rect(ofx, ofy, bwidth, bheight);
+    }
+    
+    for (int i = 0; i < cntx; i++) {
+      for (int j = 0; j < cnty; j++) {
+        stroke(51);
+        fill(100);
+        if (mass[i][j] == 1) fill(0, 255, 0);
+        if (mass[i][j] == 2) fill(255, 0, 0);
+        circle(ofx + i*dx + dx/2, ofy + j*dy + dy/2, d);
+      }
     }
   }
   

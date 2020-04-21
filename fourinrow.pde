@@ -2,7 +2,7 @@ Board board;
 
 void setup() {
   size(640, 360);
-  board = new Board(2, 2, 630, 350);
+  board = new Board(7, 6, 630, 350);
 }
 
 void draw() {
