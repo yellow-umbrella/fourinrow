@@ -19,7 +19,16 @@ class Board {
     win = 0;
   }
   
-  void show() {
+  void show(boolean type) {
+    textSize(10);
+    textAlign(LEFT, CENTER);
+    if (type) {
+      fill(255, 0, 0);
+      text("You are red", ofx, ofy/2);
+    } else {
+      fill(0, 255, 0);
+      text("You are green", ofx, ofy/2);
+    }
     if (win != 0) {
       if (win == 1) fill(0, 255, 0, 150);
       else if (win == 2) fill(255, 0, 0, 150);
@@ -45,9 +54,15 @@ class Board {
     }
   }
   
-  void add(float x, float y) {
+  int getColumn(float x, float y) {
     if (win == 0 && x >= ofx && x <= ofx + bwidth && y >= ofy && y <= ofy + bheight) {
-      int i = int((x - ofx)/dx), j;
+      return int((x - ofx)/dx);
+    }
+    return -1;
+  }
+  
+  void add(int i) {
+      int j;
       for (j = cnty - 1; j >= 0; j--) {
         if (mass[i][j] == 0) break;
         if (j == 0) return;
@@ -57,7 +72,6 @@ class Board {
       if (!check()) {
         turn = !turn;
       }
-    }
   }
   
   boolean check() {
